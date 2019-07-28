@@ -1,2 +1,2 @@
 # PHPSplash
-PHP Library handling scrapinghub/splash
+PHP Library for handling scrapinghub/splash
