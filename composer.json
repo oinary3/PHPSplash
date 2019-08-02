@@ -1,0 +1,31 @@
+{
+	"name" : "oinary3/phpsplash",
+	"type" : "library",
+	"description" : "PHP Library for handling scrapinghub/splash",
+	"homepage" : "https://github.com/oinary3/PHPSplash",
+	"license" : "MIT",
+	"autoload-dev" : {
+		"psr-4" : {
+			"Oinary3\\PHPSplash\\" : "tests/"
+		}
+	},
+	"minimum-stability" : "dev",
+	"authors" : [{
+			"name" : "今成利晴"
+		}
+	],
+	"keywords" : [
+		"scrapinghub splash"
+	],
+	"require" : {
+		"php" : "^7.1.3"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "<7.0"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Oinary3\\PHPSplash\\" : "src"
+		}
+	}
+}
