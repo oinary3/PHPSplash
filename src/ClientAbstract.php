@@ -12,27 +12,35 @@ abstract class ClientAbstract
 {
 
     /**
-     * the url of splash server
+     * the ip address or the domain name of splash server
      *
      * @var string http://foo.com:8050/
      */
-    private $splash_server;
+    protected $splash_server_address;
 
     /**
-     * the
+     * the port number of splash server
      *
-     * @var string
+     * @var int
      */
-    private $base_url;
+    protected $splash_server_port;
 
-    public function __construct(string $splash_server)
+    /**
+     * splash server timeout
+     *
+     * @var float
+     */
+    protected $timeout = 90.0;
+
+    public function __construct(string $splash_server_address, int $splash_server_port = 8050)
     {
-        $this->splash_server = $splash_server;
+        $this->splash_server_address = $splash_server_address;
+        $this->splash_server_port = $splash_server_port;
     }
 
-    public function setBaseUrl(string $base_url): void
+    protected function getBaseUrl(): string
     {
-        $this->base_url = $base_url;
+        return "http://{$this->splash_server_address}:{$this->splash_server_port}/execute";
     }
 
     /**
@@ -42,5 +50,5 @@ abstract class ClientAbstract
      * @param array $params
      * @return \stdClass
      */
-    public abstract function execute(string $script, array $params = []): \stdClass;
+    public abstract function execute(string $url, string $lua_source): ?\stdClass;
 }

@@ -27,7 +27,7 @@ class StatelessClientTest extends TestCase
         
         // TODO Auto-generated StatelessClientTest::setUp()
         
-        $this->statelessClient = new StatelessClient("hoge");
+        $this->statelessClient = new StatelessClient("192.168.1.102", 8050);
     }
 
     /**
@@ -46,11 +46,21 @@ class StatelessClientTest extends TestCase
      */
     public function testExecute()
     {
-        // TODO Auto-generated StatelessClientTest->testExecute()
-        $this->markTestIncomplete("execute test not implemented");
+        $url = "http://google.com";
         
-        $this->statelessClient->execute(null);
-        $this->assertTrue(true);
+        $script = <<< EOM
+            function main(splash, args)
+                assert(splash:go(args.url))
+                assert(splash:wait(0.5))
+                return {
+                    title = splash:evaljs('document.title')
+                }
+            end
+EOM;
+        
+        $ret = $this->statelessClient->execute($url, $script);
+        
+        $this->assertEquals('Google', $ret->title);
     }
 }
 
