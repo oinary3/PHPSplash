@@ -44,7 +44,7 @@ class StatelessClientTest extends TestCase
     /**
      * Tests StatelessClient->execute()
      */
-    public function testExecute()
+    public function testGetTitleOfGoogle()
     {
         $url = "http://google.com";
         
